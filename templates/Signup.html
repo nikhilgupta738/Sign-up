@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Signup | MainFile</title>
+	<meta name = "viewport" content = "width=device-width, initial-scale = 1">
+        <link rel="stylesheet" href="static/styles.css">
+        <script>
+            function signup(){
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                var confirmPassword = document.getElementById("confirmpassword").value;
+                
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div class="image"></div>
+        <div class="one">
+        <form method="POST" action="/signup_new_user">
+            <div class="text">SignUp</div>
+            <input type="email" id="email" name="username" placeholder="Email" required>
+            <input type="password" id = "password" name="password" placeholder="Create Password" required>
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" required>
+            <button class="btn" id="btn" onclick="signup()">SignUp</button>
+            <div class="t">Already have an account?<a href="Sign-up\templates\Login.html" target="_self" class="fp">Login</a></div>
+            <div class="line-with-text">
+                <div class="glinele"></div>
+                <div class="texto">Or</div>
+                <div class="glineri"></div>
+            </div>
+        </form>
+        <br><button class="btn ggl">Signup with Google</button>
+        <button class="btn">Signup with Facebook</button>
+        <button class="btn twt">Signup with Twitter</button>
+        <script>
+            document.getElementById('password').addEventListener('input', updateButtonState);
+            document.getElementById('confirmpassword').addEventListener('input', updateButtonState);
+    
+            function updateButtonState() {
+                var password = document.getElementById('password').value;
+                var confirmPassword = document.getElementById('confirmpassword').value;
+                var signupButton = document.getElementById('btn');
+                signupButton.disabled = password === confirmPassword;
+                if signupButton.disabled === true{
+                    signupButton.disabled = false;
+                }
+                else{
+                    signupButton.disabled = true;
+                }
+            }
+        </script>
+        </div>
+    </body>
+</html>
