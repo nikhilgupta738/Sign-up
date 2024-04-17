@@ -16,17 +16,20 @@ def signup_new_user():
 
     username = request.form.get('username')
     password = request.form.get('password')
+    conf_password = request.form.get('confirmpassword')
+    if password == conf_password:
 
-    existing_user = users_collection.find_one({'username': username})
-    if existing_user:
-        return "Username already taken. Choose another username."
-    
-    users_collection.insert_one({
-        'username': username,
-        'password': password
-    })
+        existing_user = users_collection.find_one({'username': username})
+        if existing_user:
+            return "Username already taken. Choose another username."
 
-    return "Registration successful"
+        users_collection.insert_one({
+            'username': username,
+            'password': password
+        })
+
+        return "Registration successful"
+    return "Unsucessful"
 
 @app.route('/login', methods=['POST'])
 def login():
