@@ -8,9 +8,6 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    # if 'username' in session:
-    #     return 'You are already logged in as ' + session['username']
-    
     return render_template('Signup.html')
 
 @app.route('/signup_new_user', methods=['POST'])
@@ -36,7 +33,6 @@ def login():
     users_collection = mongo.db.signup
 
     username = request.form.get('username')
-    # password = request.form.get('password')
 
     user = users_collection.find_one({'username': username})
 
